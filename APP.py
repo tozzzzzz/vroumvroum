@@ -27,9 +27,11 @@ def affichage():
     print(Ville2)
     distance=app1.get_distance(Ville1[0], Ville1[1], Ville2[0], Ville2[1])
     print(distance)
-    print(result['Autonomie'])
     nbr=app1.nbrstop(distance,int(result['Autonomie']))
     print(nbr)
+    point=app1.calcule_coord(Ville1[0],Ville1[1],Ville2[0],Ville2[1],nbr)
+    print(point)
+
     return render_template('affichage.html', voiture = result)
 
 

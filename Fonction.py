@@ -83,6 +83,37 @@ class App():
 			return 0
 		else:
 			return math.ceil(nbr)
+
+	def borne(self,):
+		None
+
+
+	def calcule_coord(self,Ville1_1, Ville1_2, Ville2_1, Ville2_2,nbr):
+		total = []
+		dest = []
+    
+		if nbr < 1:
+			dest.append(Ville2_1)
+			dest.append(Ville2_2)
+			total.append(dest)
+			dest =[]
+			return total
+		else:
+			v_lat = (float(Ville2_1) - float(Ville1_1)) / nbr
+			v_lng = (float(Ville2_2) - float(Ville1_2)) / nbr
+            
+			dest_lat = float(Ville1_1)
+			dest_lng = float(Ville1_2)
+            
+			for i in range(nbr-1):
+				dest_lat = dest_lat + float(v_lat)
+				dest_lng = dest_lng + float(v_lng)
+				dest.append(dest_lat)
+				dest.append(dest_lng)
+				total.append(dest)
+				dest =[]
+			return total
+
 	
     
    
