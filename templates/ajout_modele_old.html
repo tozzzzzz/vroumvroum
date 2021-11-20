@@ -1,0 +1,37 @@
+<html><head>
+    <title>POC supervision BCCB</title>
+</head>
+<body>
+    <h1>Créer un modèle</h1>
+
+    <form method="post" action="/creer_modele">
+        Nom du modèle: <input name="nom_mdl" type="text" required></input><br>
+        
+        <button type="submit">Créer modele</button>
+    </form>
+    
+    
+    <form method="post" action="/associer_mdl_rqt">
+        Modèles:       
+        <select name="modele">
+            {% for mods in mod %}        
+                <option value="{{ mods }}">{{ mods }}</option>
+            {% endfor %}
+        </select>
+        Requêtes: 
+        <select name="requete">
+            {% for rqts in rqt %}        
+                <option value="{{ rqts }}">{{ rqts }}</option>
+            {% endfor %}
+        </select><br><br>
+        
+<br><br>
+        
+        <button type="submit">Associer</button>
+    </form>
+    
+
+    <footer><form method="post" action="/">
+        <button type="submit">Accueil</button>
+    </form></footer>
+</body></html>

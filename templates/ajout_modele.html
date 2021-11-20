@@ -1,0 +1,38 @@
+<html><head>
+    <title>POC supervision BCCB</title>
+</head>
+<body>
+    <h1>Créer un modèle</h1>
+
+    <form method="post" action="/creer_modele">
+        Nom du modèle: <input name="nom_mdl" type="text" required></input><br>
+        
+        <button type="submit">Créer modele</button>
+    </form>
+    
+    
+    <table>
+    <tr><th>NOM</th><th>MIB</th><th></th></tr>
+    {% for mdls in mod %}
+        <tr>
+            <th>{{ mdls[1] }}</th>
+            <th>
+                <form method="post" action="/info_modele">
+                    <input value={{mdls[0]}} name="id_mdl" hidden></input>
+                    <button type="submit">INFO</button>
+                </form>
+            </th>
+        </tr>
+    {% endfor %}
+    </table>
+        
+<br><br>
+        
+        <button type="submit">Associer</button>
+    </form>
+    
+
+    <footer><form method="post" action="/">
+        <button type="submit">Accueil</button>
+    </form></footer>
+</body></html>

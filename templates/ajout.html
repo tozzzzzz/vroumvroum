@@ -1,0 +1,32 @@
+<html><head>
+    <title>POC supervision BCCB</title>
+</head>
+<body>
+    <h1>Ajouter un équipement</h1>
+    <form method="post" action="/ajout_equipement_BDD">
+        Nom d'équipement: <input name="nom_eq" type="text" required></input><br>
+        Adresse IP: <input name="adresse_IP" type="text" required></input><br>
+        Communauté: <input name="communaute" type="text" required></input><br>
+        Description: <input name="description" type="text"></input><br>
+
+        Supervision: 
+        <select name="etat_supervision">
+            <option value="1">Oui</option>
+            <option value="0">Non</option>
+        </select><br><br>
+        <!--Modèle <input name="modèle" type="text" value="a récupérer dans bdd plus tard"></input><br>-->
+        Modèles:       
+        <select name="modele">
+            {% for mods in mod %}        
+                <option value="{{ mods[0] }}">{{ mods[1] }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Ajouter l'équipement</button>
+    </form>
+
+
+
+    <footer><form method="post" action="/">
+        <button type="submit">Accueil</button>
+    </form></footer>
+</body></html>

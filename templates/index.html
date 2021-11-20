@@ -1,0 +1,51 @@
+<html><head>
+<title>POC supervision BCCB</title>
+</head>
+<body>
+<h1>Accueil supervision</h1>
+<h2>Liste d'équipements</h2>
+    <table>
+    <tr><th>NOM</th><th>IP</th><th></th></tr>
+    {% for eq in equipements %}
+        <tr>
+            <th>{{ eq[2] }}</th>
+            <th>{{ eq[3] }}</th>
+            <th>
+                <form method="post" action="/info_equipement">
+                    <button type="submit">Information</button>
+                </form>
+            </th>
+            <th>
+                <form method="post" action="/mod_equipement">
+                    <input value={{eq[0]}} name="id" hidden></input>
+                    <input value={{eq[1]}} name="Modele" hidden></input>
+                    <input value={{eq[2]}} name="Nom" hidden></input>
+                    <input value={{eq[3]}} name="IP" hidden></input>
+                    <input value={{eq[4]}} name="Supervision" hidden></input>
+                    <input value={{eq[5]}} name="Communaute" hidden></input>
+                    <button type="submit">Modifier</button>
+                </form>
+            </th>
+            <th>
+                <form method="post" action="/del_equipement">
+                    <input value={{eq[0]}} name="id_eq" hidden></input>
+                    <button type="submit">X</button>
+                </form>
+            </th>
+        <tr>
+    {% endfor %}
+    </table>
+
+<form method="post" action="/ajouter_equipement">
+    <button type="submit">Ajouter équipement</button>
+</form>
+
+<form method="post" action="/ajout_requete">
+    <button type="submit">Gestion requêtes</button>
+</form>
+<form method="post" action="/ajout_modele">
+    <button type="submit">Gestion modèles</button>
+</form>
+
+<footer></footer>
+</body></html>

@@ -27,7 +27,7 @@ from math import tan, tanh
 
 
 class CalculeDistance(ServiceBase):
-	@rpc(Unicode, Unicode, Unicode, Unicode, _returns=Integer)
+	@rpc(Unicode, Unicode, Unicode, Unicode, _returns=Double)
 	def get_distance(ctx, lat_1, lng_1, lat_2, lng_2): 
 		   lng_1, lat_1, lng_2, lat_2 = map(radians, [float(lng_1), float(lat_1), float(lng_2), float(lat_2)])
 		   d_lat = lat_2 - lat_1

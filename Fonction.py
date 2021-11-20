@@ -99,9 +99,9 @@ print(Ville2)
 
 print("avant")
 a=app1.get_distance2(Ville1[0], Ville1[1], Ville2[0], Ville2[1])
-print("la distance est "+a)
+print("la distance est ",a)
 print(a)
-print("la vitesse est "+app1.get_time(a,130))
+print("la vitesse est "+str(app1.get_time(a,130)))
 print("apres")
 
 
