@@ -6,7 +6,7 @@ Created on Thu Sep 30 10:51:05 2021
 """
 
 import requests
-
+import math
 
 from zeep import Client
 
@@ -67,7 +67,7 @@ class App():
 		return adresse
 	
 	
-	def get_distance2(self,Xville1,Yville1,Xville2,Yville2):
+	def get_distance(self,Xville1,Yville1,Xville2,Yville2):
 	
 		wsdl = 'http://127.0.0.1:8000/?wsdl'
 		client = Client(wsdl=wsdl)
@@ -76,6 +76,13 @@ class App():
 		
 	def get_time(self,distance, vitesse):
 		return float(distance) / vitesse
+
+	def nbrstop(self,distance, autonomie):
+		nbr = float(distance) / int(autonomie)
+		if nbr < 1:
+			return 0
+		else:
+			return math.ceil(nbr)
 	
     
    
@@ -83,26 +90,6 @@ class App():
         
 		
 
-app1 =App()
-
-x=48.8520930694
-y=2.34738897685
-r=1000
-n=1
-
-print(app1.BorneElec(x,y,r,n))
-
-Ville1=app1.trouverCoordonéeVille("Marignier")
-Ville2=app1.trouverCoordonéeVille("Paris")
-print(Ville1)
-print(Ville2)
-
-print("avant")
-a=app1.get_distance2(Ville1[0], Ville1[1], Ville2[0], Ville2[1])
-print("la distance est ",a)
-print(a)
-print("la vitesse est "+str(app1.get_time(a,130)))
-print("apres")
 
 
 

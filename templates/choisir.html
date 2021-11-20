@@ -1,0 +1,33 @@
+<html><head>
+<title>Projet BOIS</title>
+</head>
+<body>
+<h1>Vous avez choisi {{voiture["Modele"]}} </h1>
+<table>
+<tr><th>Marque</th><th>Modele</th><th>Autonomie</th><th>Charge</th></tr>
+<tr>
+    <th>{{voiture["Marque"]}}</th>
+    <th>{{voiture["Modele"]}}</th>
+    <th>{{voiture["Autonomie"]}}</th>
+    <th>{{voiture["Charge"]}}</th>
+</tr>
+<tr></tr>
+
+</table>
+
+<form method="post" action="/affichage">
+    Adresse de départ : <input name="adresse_1" type="text" required></input><br>
+    Adresse de d'ariver : <input name="adresse_2" type="text" required></input><br>
+    <input value={{voiture["id"]}} name="id" hidden></input>
+    <input value={{voiture["Marque"]}} name="Marque" hidden></input>
+    <input value="{{voiture["Modele"]}}" name="Modele" hidden></input>
+    <input value={{voiture["Autonomie"]}} name="Autonomie" hidden></input>
+    <input value={{voiture["Charge"]}} name="Charge" hidden></input>
+    <button type="submit">Calculer l'itineraire</button>
+</form>
+
+
+<footer><form method="post" action="/">
+    <button type="submit">Accueil</button>
+</form></footer>
+</body></html>
