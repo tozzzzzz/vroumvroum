@@ -1,0 +1,8 @@
+requests
+flask
+zeep
+mysql
+mysql.connector
+openrouteservice
+folium
+spyne
