@@ -43,7 +43,7 @@ class App():
 			bornes.append(i['fields']['acces_recharge'])
 			listeBorne.append(bornes)
 			T=T+1
-			
+		
 		return listeBorne
 
 	def calculeTrajet(self,ville1,ville2):
@@ -93,10 +93,7 @@ class App():
 		dest = []
     
 		if nbr < 1:
-			dest.append(Ville2_1)
-			dest.append(Ville2_2)
-			total.append(dest)
-			dest =[]
+			total =[]
 			return total
 		else:
 			v_lat = (float(Ville2_1) - float(Ville1_1)) / nbr
@@ -113,6 +110,15 @@ class App():
 				total.append(dest)
 				dest =[]
 			return total
+	
+
+	def trouveborne(self,point):
+		borne=[]
+		for i in point:
+			borne.append(self.BorneElec(i[0],i[1],600000,1))
+		return borne
+
+
 
 	
     

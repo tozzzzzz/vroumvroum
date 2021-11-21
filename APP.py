@@ -31,6 +31,18 @@ def affichage():
     print(nbr)
     point=app1.calcule_coord(Ville1[0],Ville1[1],Ville2[0],Ville2[1],nbr)
     print(point)
+    borne=app1.trouveborne(point)
+    print(borne)
+    route=[]
+    route.append(Ville1)
+    for i in borne:
+        infos=[]
+        
+        infos.append(i[0][2])
+        infos.append(i[0][3])
+        route.append(infos)
+    route.append(Ville2)
+    print(route)
 
     return render_template('affichage.html', voiture = result)
 
