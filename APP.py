@@ -30,11 +30,11 @@ def affichage():
     result = request.form
     print(result)
     app1 =App(result['adresse_1'],result['adresse_2'],result['Autonomie'],result['Charge'])
+    app1.run()
     trajet =app1.get_add_trajet()
     duree=app1.get_temps()
-    print(trajet)
-    print(duree)
-    return render_template('affichage.html', voiture = result,trajets=trajet,time=duree)
+    distances=app1.get_distances()
+    return render_template('affichage.html', voiture = result,trajets=trajet,time=duree,distance=distances)
 
 
 

@@ -3,7 +3,7 @@
     </head>
     <body>
     <h1>Trajet</h1>
-    <h2>Liste des voitures</h2>
+    <h2>Voiture choisie</h2>
     <table>
         <tr><th>Marque</th><th>Modele</th><th>Autonomie</th><th>Charge</th><th>Depart</th><th>arriver</th></tr>
         <tr>
@@ -15,8 +15,14 @@
             <th>{{voiture["adresse_2"]}}</th>
         </tr>
         <tr></tr>
-        {{time}}
+        
         </table>
+        <h2>Temps estimé</h2>
+        {{time}}
+        <h2>Distance estimée</h2>
+        {{distance}}
+        <h2>Adresse des differents arrêts</h2>
+
         <table>
         {% for add in trajets %}
         <tr>

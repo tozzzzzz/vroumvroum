@@ -99,7 +99,7 @@ class App():
 	
 	def time(self,distance,autonomie,nbrarrete):
 		trajet=self.get_time(distance)
-		self.times= datetime.timedelta(minutes =(autonomie*nbrarrete+trajet))
+		self.times= datetime.timedelta(minutes =(int(autonomie)*int(nbrarrete)+float(trajet)))
 
 	def nbrstop(self,distance, autonomie):
 		nbr = float(distance) / int(autonomie)
@@ -140,7 +140,8 @@ class App():
 			borne.append(self.BorneElec(i[0],i[1],600000,1))
 		return borne
 	
-
+	def debug(self):
+		return self.route
 
 
 	def get_temps(self):
@@ -155,12 +156,16 @@ class App():
 	
 	def fulladdre(self,point):
 		for i in point:
+			print(i)
 			self.trajet.append(self.getaddr(i[0],i[1]))
 
 
 	def get_add_trajet(self):
 		return self.trajet
 
+
+	def get_distances(self):
+		return self.distance
 	def run(self):
 		self.Ville1=self.trouverCoordonéeVille(self.addre1)
 		self.Ville2=self.trouverCoordonéeVille(self.addre2)
@@ -176,6 +181,7 @@ class App():
 			self.route.append(infos)
 		self.route.append(self.Ville2)
 		self.time(self.distance,self.autonomie,self.nbr)
+		self.fulladdre(self.route)
 
 
 
