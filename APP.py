@@ -29,31 +29,12 @@ def choisir():
 def affichage():
     result = request.form
     print(result)
-    app1 =App()
-    Ville1=app1.trouverCoordonéeVille(result['adresse_1'])
-    Ville2=app1.trouverCoordonéeVille(result['adresse_2'])
-    print(Ville1)
-    print(Ville2)
-    distance=app1.get_distance(Ville1[0], Ville1[1], Ville2[0], Ville2[1])
-    print(distance)
-    nbr=app1.nbrstop(distance,int(result['Autonomie']))
-    print(nbr)
-    point=app1.calcule_coord(Ville1[0],Ville1[1],Ville2[0],Ville2[1],nbr)
-    print(point)
-    borne=app1.trouveborne(point)
-    print(borne)
-    route=[]
-    route.append(Ville1)
-    for i in borne:
-        infos=[]
-        
-        infos.append(i[0][2])
-        infos.append(i[0][3])
-        route.append(infos)
-    route.append(Ville2)
-    print(route)
-
-    return render_template('affichage.html', voiture = result)
+    app1 =App(result['adresse_1'],result['adresse_2'],result['Autonomie'],result['Charge'])
+    trajet =app1.get_add_trajet()
+    duree=app1.get_temps()
+    print(trajet)
+    print(duree)
+    return render_template('affichage.html', voiture = result,trajets=trajet,time=duree)
 
 
 

@@ -7,7 +7,7 @@ Created on Thu Sep 30 10:51:05 2021
 
 import requests
 import math
-
+import datetime
 from zeep import Client
 
 
@@ -15,10 +15,28 @@ from zeep import Client
 
 
 class App():
-	def __init__(self):
-		pass
-	
-	
+	addre1 =""
+	addre2 =""
+	autonomie =0
+	charge =0
+	route=[]
+	distance=0
+	nbr=0
+	Ville2=[]
+	Ville1=[]
+	point=[]
+	bornes=[]
+	times=0
+	trajet=[]
+
+
+	def __init__(self,addre1,addre2,autonomie,charge):
+		self.addre1 = addre1
+		self.addre2 = addre2
+		self.autonomie = autonomie
+		self.charge = charge
+		
+
 	
 	def BorneElec(self,X,Y,R,N):
 		
@@ -46,9 +64,6 @@ class App():
 			T=T+1
 		
 		return listeBorne
-
-	def calculeTrajet(self,ville1,ville2):
-		None
 		
 		
 	def trouverCoordonéeVille(self,ville):
@@ -75,8 +90,16 @@ class App():
 
 		return client.service.get_distance(Xville1,Yville1,Xville2,Yville2)
 		
-	def get_time(self,distance, vitesse):
-		return float(distance) / vitesse
+	def get_time(self,distance):
+		if (float(distance)>100):
+			vitesse=102
+		else:
+			vitesse=68
+		return (float(distance) / vitesse)*60
+	
+	def time(self,distance,autonomie,nbrarrete):
+		trajet=self.get_time(distance)
+		self.times= datetime.timedelta(minutes =(autonomie*nbrarrete+trajet))
 
 	def nbrstop(self,distance, autonomie):
 		nbr = float(distance) / int(autonomie)
@@ -85,8 +108,6 @@ class App():
 		else:
 			return math.ceil(nbr)
 
-	def borne(self,):
-		None
 
 
 	def calcule_coord(self,Ville1_1, Ville1_2, Ville2_1, Ville2_2,nbr):
@@ -118,6 +139,46 @@ class App():
 		for i in point:
 			borne.append(self.BorneElec(i[0],i[1],600000,1))
 		return borne
+	
+
+
+
+	def get_temps(self):
+		return self.times
+	
+	def getaddr(self,latitude,longitude):
+
+		URL="https://nominatim.openstreetmap.org/reverse?lat="+str(latitude)+"&lon="+str(longitude)+"&zoom=18&format=json"
+		r = requests.get(url = URL)
+		data = r.json()
+		return data['display_name']
+	
+	def fulladdre(self,point):
+		for i in point:
+			self.trajet.append(self.getaddr(i[0],i[1]))
+
+
+	def get_add_trajet(self):
+		return self.trajet
+
+	def run(self):
+		self.Ville1=self.trouverCoordonéeVille(self.addre1)
+		self.Ville2=self.trouverCoordonéeVille(self.addre2)
+		self.distance=self.get_distance(self.Ville1[0], self.Ville1[1], self.Ville2[0], self.Ville2[1])
+		self.nbr=self.nbrstop(self.distance,int(self.autonomie))
+		self.point=self.calcule_coord(self.Ville1[0],self.Ville1[1],self.Ville2[0],self.Ville2[1],self.nbr)
+		self.bornes=self.trouveborne(self.point)
+		self.route.append(self.Ville1)
+		for i in self.bornes:
+			infos=[]
+			infos.append(i[0][2])
+			infos.append(i[0][3])
+			self.route.append(infos)
+		self.route.append(self.Ville2)
+		self.time(self.distance,self.autonomie,self.nbr)
+
+
+
 
 
 

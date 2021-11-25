@@ -15,9 +15,14 @@
             <th>{{voiture["adresse_2"]}}</th>
         </tr>
         <tr></tr>
-        
+        {{time}}
         </table>
-    
-    
+        <table>
+        {% for add in trajets %}
+        <tr>
+            <th>{{ add }}</th>
+        <tr>
+        {% endfor %}
+        </table>
     <footer></footer>
     </body></html>
