@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Oct  1 16:59:35 2021
+
+@author: Boisced
+"""
+
+
+
 from flask import Flask, render_template, request
 from bdd_fonctions import *
 from Fonction import *

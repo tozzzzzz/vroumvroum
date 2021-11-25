@@ -13,6 +13,7 @@ from zeep import Client
 
 
 
+
 class App():
 	def __init__(self):
 		pass
@@ -117,6 +118,8 @@ class App():
 		for i in point:
 			borne.append(self.BorneElec(i[0],i[1],600000,1))
 		return borne
+
+
 
 
 

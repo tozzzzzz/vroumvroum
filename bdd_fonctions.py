@@ -2,7 +2,7 @@
 """
 Created on Fri Oct  1 16:59:35 2021
 
-@author: user
+@author: Boisced
 """
 
 import mysql.connector
