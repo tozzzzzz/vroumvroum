@@ -1,0 +1,31 @@
+<html><head>
+<title>Projet BOIS</title>
+</head>
+<body>
+<h1>Accueil</h1>
+<h2>Liste des voitures</h2>
+    <table>
+    <tr><th>Marque</th><th>Modele</th><th>Autonomie</th><th>Charge</th><th></th></tr>
+    {% for car in voitures %}
+        <tr>
+            <th>{{ car[1] }}</th>
+            <th>{{ car[2] }}</th>
+            <th>{{ car[3] }}</th>
+            <th>{{ car[4] }}</th>
+            <th>
+                <form method="post" action="/choisir">
+                    <input value={{car[0]}} name="id" hidden></input>
+                    <input value={{car[1]}} name="Marque" hidden></input>
+                    <input value="{{car[2]}}" name="Modele" hidden></input>
+                    <input value={{car[3]}} name="Autonomie" hidden></input>
+                    <input value={{car[4]}} name="Charge" hidden></input>
+                    <button type="submit">Choisir</button>
+                </form>
+            </th>
+        <tr>
+    {% endfor %}
+    </table>
+
+
+<footer></footer>
+</body></html>

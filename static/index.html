@@ -6,14 +6,14 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Projet BOIS</title>
-        <link rel="icon" type="image/x-icon" href={{ url_for('static', filename="assets/favicon.ico")}} />
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href={{ url_for('static', filename="css/styles.css")}} rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -38,9 +38,9 @@
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
-                        <h1 class="mx-auto my-0 text-uppercase">Vous avez choisi {{voiture["Modele"]}} </h1>
-                        <!-- <h2 class="text-white-50 mx-auto mt-2 mb-5">Liste des voitures</h2> -->
-                        <!--  <a class="btn btn-primary" href="#about">Get Started</a> -->
+                        <h1 class="mx-auto my-0 text-uppercase">Accueil</h1>
+                        <h2 class="text-white-50 mx-auto mt-2 mb-5">Liste des voitures</h2>
+                        <!-- <a class="btn btn-primary" href="#about">Get Started</a> -->
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
         </section> -->
         <!-- Projects-->
         <section class="projects-section bg-light" id="projects">
-            <div class="container px-4 px-lg-5"> -->
+            <div class="container px-4 px-lg-5">
                 <!-- Featured Project Row-->
                 <!-- <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
                     <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="..." /></div>
@@ -104,42 +104,15 @@
                         </div>
                     </div>
                 </div> -->
-             </div>
-        </section> 
+            </div>
+        </section>
         <!-- Signup-->
         <section class="signup-section" id="signup">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-md-10 col-lg-8 mx-auto text-center">
                         <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-                        <!-- <h2 class="text-white mb-5">Subscribe to receive updates!</h2> -->
-                        <table class="projects-section bg-light" class="d-flex h-100">
-                            <tr><th>Marque</th><th>Modele</th><th>Autonomie</th><th>Charge</th></tr>
-<tr>
-    <th>{{voiture["Marque"]}}</th>
-    <th>{{voiture["Modele"]}}</th>
-    <th>{{voiture["Autonomie"]}}</th>
-    <th>{{voiture["Charge"]}}</th>
-</tr>
-<tr></tr>
-
-                            </table>
-
-                            <form class="projects-section bg-light" method="post" action="/affichage">
-                                Adresse de départ : <input name="adresse_1" type="text" required></input><br>
-                                Adresse de d'arivée : <input name="adresse_2" type="text" required></input><br>
-                                <input value={{voiture["id"]}} name="id" hidden></input>
-                                <input value={{voiture["Marque"]}} name="Marque" hidden></input>
-                                <input value="{{voiture["Modele"]}}" name="Modele" hidden></input>
-                                <input value={{voiture["Autonomie"]}} name="Autonomie" hidden></input>
-                                <input value={{voiture["Charge"]}} name="Charge" hidden></input>
-                                <button type="submit">Calculer l'itinéraire</button>
-                            </form>
-                            
-                            
-                            <footer><form method="post" action="/">
-                                <button type="submit">Accueil</button>
-
+                        <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
                         <!-- * * * * * * * * * * * * * * *-->
                         <!-- * * SB Forms Contact Form * *-->
                         <!-- * * * * * * * * * * * * * * *-->
@@ -224,7 +197,7 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src={{ url_for('static', filename="js/scripts.js")}}></script>
+        <script src="js/scripts.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

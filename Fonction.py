@@ -35,6 +35,7 @@ class App():
 		self.addre2 = addre2
 		self.autonomie = autonomie
 		self.charge = charge
+		self.route= []
 		
 
 	
