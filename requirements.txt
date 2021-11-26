@@ -6,3 +6,4 @@ mysql.connector
 openrouteservice
 folium
 spyne
+gunicorn
